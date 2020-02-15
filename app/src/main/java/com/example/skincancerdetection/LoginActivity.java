@@ -1,5 +1,6 @@
 package com.example.skincancerdetection;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
+    Button bt_register;
     Button bt_login;
     AutoCompleteTextView loginUserId;
     EditText loginPassword;
@@ -32,11 +34,13 @@ public class LoginActivity extends AppCompatActivity {
     public String loginResponseBody;
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     public String loginPostBody;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         this.setTitle("Login");
+        bt_register = (Button)findViewById(R.id.buttonRegisterSubmit);
         bt_login = (Button)findViewById(R.id.buttonLoginSubmit);
         loginUserId = (AutoCompleteTextView)findViewById(R.id.loginUserId);
         loginPassword = (EditText)findViewById(R.id.loginPassword);
@@ -71,6 +75,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        bt_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registrationActivityIntent = new Intent(getApplicationContext(),RegisterActivity.class);
+                startActivity(registrationActivityIntent);
+            }
+        });
     }
 
     public void postRequest(String postUrl,String postBody) throws IOException {
@@ -97,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginResponseBody = response.body().string();
                 Log.d("TAG",loginResponseBody);
                 storeTokenId();
+                startActivity(new Intent(getApplicationContext(),DashboardActivity.class));
             }
         });
     }
@@ -109,9 +122,11 @@ public class LoginActivity extends AppCompatActivity {
             String tokenId = responseObject.get("tokenId").toString();
             Log.d("response","Status = "+status+" Message = "+message+" Token ID = "+tokenId);
 
-            SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+            SharedPreferences pref = getApplicationContext().getSharedPreferences("LoginCredentials", 0);
             SharedPreferences.Editor editor = pref.edit();
             editor.putString("tokenId",tokenId);
+            editor.putString("userId",loginUserId.getText().toString());
+            editor.putString("pass",loginPassword.getText().toString());
             editor.commit();
             Log.d("hello","Saved Successfully");
 

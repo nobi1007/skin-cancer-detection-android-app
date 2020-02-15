@@ -1,5 +1,6 @@
 package com.example.skincancerdetection;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -87,6 +88,10 @@ public class RegisterActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                Intent forwardingLoginIntent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(forwardingLoginIntent);
+
             }
         });
     }
