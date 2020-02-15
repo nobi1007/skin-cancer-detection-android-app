@@ -8,7 +8,7 @@
 
 
     <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
+        android:id="@+id/loginUserId"
         android:layout_width="194dp"
         android:layout_height="42dp"
         android:hint="ex. nobi1007"
@@ -26,14 +26,14 @@
         android:text="Password"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintEnd_toStartOf="@+id/loginPassword"
         app:layout_constraintHorizontal_bias="0.729"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.103" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/loginPassword"
         android:layout_width="194dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.76"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView"
+        app:layout_constraintTop_toBottomOf="@+id/loginUserId"
         app:layout_constraintVertical_bias="0.07" />
 
     <TextView
@@ -53,14 +53,14 @@
         android:text="User Id"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/autoCompleteTextView"
+        app:layout_constraintEnd_toStartOf="@+id/loginUserId"
         app:layout_constraintHorizontal_bias="0.788"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.309" />
 
     <Button
-        android:id="@+id/buttonRegisterSubmit"
+        android:id="@+id/buttonLoginSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="  Login  "
@@ -68,6 +68,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/loginPassword"
         app:layout_constraintVertical_bias="0.282" />
 </android.support.constraint.ConstraintLayout>
