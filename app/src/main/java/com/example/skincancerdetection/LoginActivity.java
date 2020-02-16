@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     public String loginPostBody;
     public String loginResponseStatus, loginResponseMessage;
     Switch switchToogle;
+//    public String displayString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,16 +117,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void enableSubmitIfReady() {
-        boolean isIdFilled = loginUserId.getText().toString().length() > 2;
+        boolean isIdFilled = loginUserId.getText().toString().length() > 0;
         boolean isPassFilled = loginPassword.getText().toString().length() > 0;
         if (!isIdFilled) {
-            incorrectId.setText("Login id should contain minimum 3 characters.");
+            incorrectId.setText("This field can't be empty.");
             bt_login.setEnabled(false);
         } else {
             incorrectId.setText("");
         }
         if (!isPassFilled) {
-            incorrectPass.setText("Password can't be empty.");
+            incorrectPass.setText("This field can't be empty.");
             bt_login.setEnabled(false);
         } else {
             incorrectPass.setText("");
