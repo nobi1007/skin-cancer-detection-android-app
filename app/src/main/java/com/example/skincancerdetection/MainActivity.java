@@ -51,6 +51,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+//---------------
+
+//        Thread welcomeThread = new Thread(){
+//            @Override
+//            public void run(){
+//                try{
+//                    super.run();
+//                    sleep(3000);
+//                }
+//                catch (Exception e){
+//                    Log.d("Sleeper Exception",e.toString());
+//                }
+//                finally{
+//                    Intent i = new Intent(SplashActivity)
+//                }
+//
+//            }
+//        }
+
+//---------------
+
                 SharedPreferences loginCredentials = getApplicationContext().getSharedPreferences("LoginCredentials", 0);
                 token = loginCredentials.getString("tokenId", null);
                 uid = loginCredentials.getString("userId", null);
@@ -202,5 +223,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }
